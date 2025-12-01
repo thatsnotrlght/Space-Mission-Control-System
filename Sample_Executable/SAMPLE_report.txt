@@ -1,0 +1,216 @@
+===============================================
+         SPACE MISSION CONTROL REPORT         
+===============================================
+Total Missions in System: 23
+
+Mission ID: 8001
+Mission Name: Manual_Alpha
+Launch Date: 2024-01-01
+Status: Planned
+Communications: 3
+-------------------
+Communication Summary:
+  Routine: 1, Urgent: 1, Emergency: 1
+
+Mission ID: 8002
+Mission Name: Manual_Beta
+Launch Date: 2024-12-31
+Status: Planned
+Communications: 1
+-------------------
+Communication Summary:
+  Routine: 1, Urgent: 0, Emergency: 0
+
+Mission ID: 8004
+Mission Name: Valid_Mission
+Launch Date: 2024-06-15
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7001
+Mission Name: Alpha_Centauri_Probe
+Launch Date: 2024-01-10
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7002
+Mission Name: Betelgeuse_Observatory
+Launch Date: 2024-01-25
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7003
+Mission Name: Cosmic_Ray_Study
+Launch Date: 2024-02-15
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7004
+Mission Name: Dark_Matter_Hunt
+Launch Date: 2024-03-05
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7005
+Mission Name: Exoplanet_Survey
+Launch Date: 2024-03-20
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7006
+Mission Name: Fusion_Reactor_Test
+Launch Date: 2024-04-12
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7007
+Mission Name: Gravity_Wave_Detect
+Launch Date: 2024-05-01
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7008
+Mission Name: Hyperspace_Research
+Launch Date: 2024-05-18
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7009
+Mission Name: Ion_Drive_Mission
+Launch Date: 2024-06-08
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7010
+Mission Name: Jovian_Moon_Mapping
+Launch Date: 2024-06-25
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7011
+Mission Name: Kuiper_Belt_Explore
+Launch Date: 2024-07-15
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7012
+Mission Name: Lunar_Base_Construct
+Launch Date: 2024-08-02
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7013
+Mission Name: Martian_Terraform
+Launch Date: 2024-08-20
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7014
+Mission Name: Nebula_Classification
+Launch Date: 2024-09-10
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7015
+Mission Name: Orbital_Mechanics
+Launch Date: 2024-09-28
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7016
+Mission Name: Pulsar_Navigation
+Launch Date: 2024-10-15
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7017
+Mission Name: Quantum_Entanglement
+Launch Date: 2024-11-05
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7018
+Mission Name: Radio_Telescope_Array
+Launch Date: 2024-11-22
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7019
+Mission Name: Stellar_Cartography
+Launch Date: 2024-12-10
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+Mission ID: 7020
+Mission Name: Time_Dilation_Test
+Launch Date: 2024-12-28
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+===============================================
+SYSTEM TOTALS:
+Total Communications: 4
+===============================================

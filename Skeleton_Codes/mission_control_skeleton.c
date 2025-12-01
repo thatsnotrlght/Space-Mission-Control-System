@@ -48,7 +48,26 @@ MissionControl* create_mission_control(int initial_capacity) {
     //    - Return initialized system
     
     // Your implementation here:
-    
+    if (initial_capacity <= 0) {
+        return NULL;
+    }
+
+    MissionControl *ctrl = malloc(sizeof(MissionControl))
+
+    if (ctrl == NULL) {
+        perror("malloc failed");
+    }
+
+    ctrl->missions = malloc(initial_capacity * sizeof(Mission));
+    if (ctrl->missions == NULL) {
+        free(ctrl);
+        return NULL;
+    }
+
+    ctrl->mission_count = 0;
+    ctrl->capacity = initial_capacity;
+
+    return ctrl;
 }
 
 /*
@@ -102,5 +121,35 @@ int create_mission_with_crew(MissionControl* system, int mission_id, const char*
     //    - Return 0 for success
     
     // Your implementation here:
-    
+    if (system == NULL || launch_date == NULL || (name == NULL || name[0] == '\0')) {
+        return -1;
+    }
+
+    if (mission_id <= 0) {
+        return -1;
+    }
+
+    if (!is_valid_date_format(launch_date)) {
+        return -1;
+    }
+
+    for (int i = 0; i < system->mission_count; i++) {
+        if (mission_id == system->missions[i].mission_id) {
+            return -1;
+        } 
+    }
+
+    if (system->mission_count >= system->capacity) {
+        int new_capacity = system->capacity * 2;
+        Mission *new_missions = realloc(system->missions, new_capacity * sizeof(Mission));
+        if (new_missions == NULL) {
+            return -1;
+        }
+
+        system->capacity = new_capacity;
+        system->missions = new_missions;
+    }
+
+    int new_index = system->mission_count;
+    Mission *new_mission = &system->missions[new_index];
 }

@@ -1,0 +1,11 @@
+10
+6001 Mercury_Flyby 2024-01-15
+6002 Venus_Orbital 2024-02-28
+6003 Earth_Defense 2024-04-12
+6004 Mars_Colony_1 2024-05-30
+6005 Jupiter_Probe 2024-07-14
+6006 Saturn_Ring_Study 2024-08-25
+6007 Uranus_Survey 2024-10-08
+6008 Neptune_Deep_Scan 2024-11-22
+6009 Asteroid_Mining 2024-12-15
+6010 Solar_Observatory 2024-12-31

@@ -1,0 +1,54 @@
+##################################################################################
+# RIGOROUS TEST CASES - Comprehensive Testing (30 tests)                         #
+# Tests edge cases, boundary conditions, and stress scenarios                    #
+#                                                                                #
+# IMPORTANT: SUCCESS/FAILURE indicates what the function should return:          #
+#            - SUCCESS = Function should return 0 (operation succeeded)          # 
+#            - FAILURE = Function should return -1 (operation failed with error) #
+##################################################################################
+
+
+# Test Function 1: create_mission_control - Edge cases
+#-----------------------------------------
+TEST_CREATE_SYSTEM 1 SUCCESS                                        # Minimum valid capacity - should succeed
+TEST_CREATE_SYSTEM 100 SUCCESS                                      # Large capacity - should succeed
+TEST_CREATE_SYSTEM -1 FAILURE                                       # Negative capacity - should fail
+TEST_CREATE_SYSTEM 0 FAILURE                                        # Zero capacity - should fail
+
+# Test Function 2: create_mission_with_crew - Boundary testing
+#-----------------------------------------
+TEST_CREATE_MISSION 8001 Manual_Alpha 2024-01-01 SUCCESS            # Valid mission - should succeed (CHANGED ID range to 8000s)
+TEST_CREATE_MISSION 8002 Manual_Beta 2024-12-31 SUCCESS             # Valid end of year date - should succeed
+TEST_CREATE_MISSION 8001 Duplicate 2024-03-15 FAILURE               # Duplicate ID - should fail
+TEST_CREATE_MISSION 0 Invalid_ID 2024-04-20 FAILURE                 # Zero mission ID - should fail
+TEST_CREATE_MISSION 8003 Bad_Date 2024-13-40 FAILURE                # Invalid date - should fail
+TEST_CREATE_MISSION 8004 Valid_Mission 2024-06-15 SUCCESS           # Valid mission - should succeed
+
+# Test Function 3: add_communication - Array expansion and validation
+#-----------------------------------------
+TEST_ADD_COMM 8001 2024-01-01_08:00 1 First_message SUCCESS         # Valid communication - should succeed
+TEST_ADD_COMM 8001 2024-01-01_09:00 2 Second_message SUCCESS        # Another valid comm - should succeed
+TEST_ADD_COMM 8001 2024-01-01_10:00 3 Third_message SUCCESS         # Third valid comm - should succeed
+TEST_ADD_COMM 8002 2024-12-31_23:59 1 Year_end SUCCESS              # Edge time - should succeed
+TEST_ADD_COMM 9999 2024-01-01_11:00 1 Bad_mission FAILURE           # Invalid mission ID - should fail
+TEST_ADD_COMM 8001 bad_timestamp 1 Bad_format FAILURE               # Invalid timestamp - should fail
+TEST_ADD_COMM 8001 2024-01-01_12:00 99 Bad_priority FAILURE         # Invalid priority - should fail
+
+# Test Function 4: load_missions_from_file - Various file scenarios
+#-----------------------------------------
+TEST_LOAD_FILE rigorous_missions_data.txt SUCCESS                   # Valid file with data - should succeed (file has 7001-7020, no conflict)
+TEST_LOAD_FILE empty_missions_data.txt SUCCESS                      # Valid empty file - should succeed
+TEST_LOAD_FILE invalid_missions_data.txt FAILURE                    # File with invalid data - should fail
+
+# Test Function 5: save_mission_report
+#-----------------------------------------
+TEST_SAVE_REPORT /nonexistent/dir/file.txt FAILURE                  # Non-existent path - should fail
+TEST_SAVE_REPORT missing/folder/report.txt FAILURE                  # Missing directory - should fail
+TEST_SAVE_REPORT /invalid/path/file.txt FAILURE                     # Invalid path - should fail
+TEST_SAVE_REPORT backup_report.txt SUCCESS                          # Valid filename - should succeed
+TEST_SAVE_REPORT data/report.txt FAILURE                            # Non-existent directory - should fail
+TEST_SAVE_REPORT output.txt SUCCESS                                 # Simple valid filename - should succeed
+TEST_SAVE_REPORT /root/protected.txt FAILURE                        # Protected directory - should fail
+TEST_SAVE_REPORT temp_report.txt SUCCESS                            # Another valid filename - should succeed
+TEST_SAVE_REPORT /usr/bin/report.txt FAILURE                        # System directory - should fail
+TEST_SAVE_REPORT final_report.txt SUCCESS                           # Valid save operation - should succeed

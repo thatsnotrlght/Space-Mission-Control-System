@@ -1,0 +1,39 @@
+##################################################################################
+# MODERATE TEST CASES - Mixed Valid/Invalid (15 tests)                           #
+# Tests both successful operations and error handling                            #
+#                                                                                #
+# IMPORTANT: SUCCESS/FAILURE indicates what the function should return:          #
+#            - SUCCESS = Function should return 0 (operation succeeded)          #
+#            - FAILURE = Function should return -1 (operation failed with error) #
+##################################################################################
+
+
+# Test Function 1: create_mission_control
+#-----------------------------------------
+TEST_CREATE_SYSTEM 3 SUCCESS      # Valid capacity - should succeed
+TEST_CREATE_SYSTEM 0 FAILURE      # Invalid capacity - should fail
+
+# Test Function 2: create_mission_with_crew
+#-----------------------------------------
+TEST_CREATE_MISSION 5001 Manual_Mission 2024-01-15 SUCCESS          # Valid mission - should succeed (CHANGED ID to avoid conflict)
+TEST_CREATE_MISSION 5001 Duplicate_ID 2024-05-10 FAILURE            # Duplicate ID - should fail
+TEST_CREATE_MISSION 5002 Invalid_Date 2024-13-40 FAILURE            # Invalid date - should fail
+
+# Test Function 3: add_communication
+#-----------------------------------------
+TEST_ADD_COMM 5001 2024-01-15_09:00 2 Mission_start SUCCESS         # Valid communication - should succeed
+TEST_ADD_COMM 9999 2024-01-15_10:00 1 Invalid_mission FAILURE       # Invalid mission ID - should fail
+TEST_ADD_COMM 5001 invalid_time 1 Bad_format FAILURE                # Invalid timestamp - should fail
+
+# Test Function 4: load_missions_from_file
+#-----------------------------------------
+TEST_LOAD_FILE moderate_missions_data.txt SUCCESS                   # Valid file exists - should succeed (file has 6001-6010, no conflict)
+TEST_LOAD_FILE nonexistent_data.txt FAILURE                        # File doesn't exist - should fail
+
+# Test Function 5: save_mission_report
+#-----------------------------------------
+TEST_SAVE_REPORT mission_report.txt SUCCESS                         # Valid save operation - should succeed
+TEST_SAVE_REPORT /invalid/path/file.txt FAILURE                     # Invalid path - should fail
+TEST_SAVE_REPORT /nonexistent/dir/file.txt FAILURE                  # Non-existent path - should fail
+TEST_SAVE_REPORT missing/folder/report.txt FAILURE                  # Missing directory - should fail
+TEST_SAVE_REPORT backup_report.txt SUCCESS                          # Valid save operation - should succeed

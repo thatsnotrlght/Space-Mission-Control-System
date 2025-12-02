@@ -59,5 +59,59 @@ int add_communication(MissionControl* system, int mission_id, const char* timest
     //    - Return 0 for success
     
     // Your implementation here:
+   if (system == NULL || timestamp == NULL || message == NULL || mission_id <= 0) {
+      return -1;
+   }
+
+   if (message[0] == '\0' || strlen(message) >= MAX_MESSAGE_LENGTH) {
+      return -1;
+   }
+
+   if(!(is_valid_timestamp_format(timestamp))) {
+      return -1;
+   }
+
+   if (priority < ROUTINE || priority > EMERGENCY) {
+      return -1;
+   }
+
+   Mission *target_mission = NULL;
+   for (int i = 0; i < system->mission_count; i++) {
+      if (mission_id == system->missions[i].mission_id) {
+         target_mission = &system->missions[i];
+         break;
+      }   
+   }
+   if (target_mission == NULL) {
+      return -1;
+   }
+
+   if (target_mission->comm_count >= target_mission->comm_capacity) {
+      int new_comm_capacity = target_mission->comm_capacity * 2;
+      CommLog *new_comm_logs = realloc(target_mission->communications, new_comm_capacity * sizeof(CommLog));
+      if (new_comm_logs == NULL) {
+         return -1;
+      }
+
+      target_mission->comm_capacity = new_comm_capacity;
+      target_mission->communications = new_comm_logs;
+   }
+
+   int index = target_mission->comm_count;
+   CommLog *new_comm = &target_mission->communications[index];
+
+   new_comm->log_id = target_mission->comm_count + 1;
+
+   strncpy(new_comm->timestamp, timestamp, sizeof(new_comm->timestamp) - 1);
+   new_comm->timestamp[sizeof(new_comm->timestamp) - 1] = '\0';
     
+   strncpy(new_comm->message, message, sizeof(new_comm->message) - 1);
+   new_comm->message[sizeof(new_comm->message) - 1] = '\0';
+
+   new_comm->priority =  priority;
+   new_comm->acknowledged = 0;
+
+   target_mission->comm_count++;
+
+   return 0;
 }

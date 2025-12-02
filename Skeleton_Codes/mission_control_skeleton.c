@@ -152,4 +152,26 @@ int create_mission_with_crew(MissionControl* system, int mission_id, const char*
 
     int new_index = system->mission_count;
     Mission *new_mission = &system->missions[new_index];
+
+    new_mission->mission_id = mission_id;
+
+    strncpy(new_mission->mission_name, name, sizeof(new_mission->mission_name) - 1);
+    new_mission->mission_name[sizeof(new_mission->mission_name) - 1] = '\0';
+
+    strncpy(new_mission->launch_date, launch_date, sizeof(new_mission->launch_date) - 1);
+    new_mission->launch_date[sizeof(new_mission->launch_date) - 1] = '\0';
+
+    new_mission->status = PLANNED;
+
+
+    new_mission->communications = calloc(INITIAL_COMM_CAPACITY * sizeof(CommLog));
+    if (new_mission->communications == NULL) {
+        return -1;
+    }
+    new_mission->comm_count = 0;
+    new_mission->comm_capacity = INITIAL_COMM_CAPACITY;
+
+    system->mission_count++;
+    
+    return 0;
 }

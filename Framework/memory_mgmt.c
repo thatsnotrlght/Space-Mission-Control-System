@@ -58,5 +58,23 @@ void free_mission_control(MissionControl* system) {
     //   3. system (outermost)
     
     // Your implementation here:
-    
+    if (system == NULL) {
+        return;
+    }
+
+    if (system->missions != NULL) {
+        for (int i = 0; i < system->mission_count; i++) {
+            
+            if (system->missions[i].communications != NULL) {
+                free(system->missions[i].communications);
+                
+                system->missions[i].communications = NULL;
+            }
+        }
+        
+        free(system->missions);
+        
+        system->missions = NULL;
+    }
+    free(system);
 }

@@ -1,0 +1,36 @@
+===============================================
+         SPACE MISSION CONTROL REPORT         
+===============================================
+Total Missions in System: 3
+
+Mission ID: 8001
+Mission Name: Manual_Alpha
+Launch Date: 2024-01-01
+Status: Planned
+Communications: 3
+-------------------
+Communication Summary:
+  Routine: 1, Urgent: 1, Emergency: 1
+
+Mission ID: 8002
+Mission Name: Manual_Beta
+Launch Date: 2024-12-31
+Status: Planned
+Communications: 1
+-------------------
+Communication Summary:
+  Routine: 1, Urgent: 0, Emergency: 0
+
+Mission ID: 8004
+Mission Name: Valid_Mission
+Launch Date: 2024-06-15
+Status: Planned
+Communications: 0
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 0, Emergency: 0
+
+===============================================
+SYSTEM TOTALS:
+Total Communications: 4
+===============================================

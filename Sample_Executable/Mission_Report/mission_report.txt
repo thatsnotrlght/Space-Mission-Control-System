@@ -1,0 +1,18 @@
+===============================================
+         SPACE MISSION CONTROL REPORT         
+===============================================
+Total Missions in System: 1
+
+Mission ID: 5001
+Mission Name: Manual_Mission
+Launch Date: 2024-01-15
+Status: Planned
+Communications: 1
+-------------------
+Communication Summary:
+  Routine: 0, Urgent: 1, Emergency: 0
+
+===============================================
+SYSTEM TOTALS:
+Total Communications: 1
+===============================================

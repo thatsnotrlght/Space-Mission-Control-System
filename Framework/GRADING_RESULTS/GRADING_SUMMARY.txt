@@ -1,0 +1,25 @@
+Space Mission Control System Assignment - Grading Summary
+Generated: Tue Dec  2 00:52:15 EST 2025
+=================================================================
+
+Samuel Artiste: EXTRACTION_FAILED - Could not extract ZIP file
+
+=================================================================
+                    GRADING STATISTICS
+=================================================================
+Total Students Processed: 1
+Successfully Graded: 0
+Failed to Grade: 1
+Perfect Autograder Scores: 0
+Compilation Failures: 0
+
+Success Rate: 0%
+Perfect Score Rate: 0%
+Compilation Failure Rate: 0%
+
+Individual grade files are in: GRADING_RESULTS/
+Individual Mission_Report directories are in: GRADING_RESULTS/
+Detailed log file: GRADING_RESULTS/batch_grading.log
+
+Note: Manual grading (10 points) for code quality, comments,
+and README still needs to be added to autograder scores.

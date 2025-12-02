@@ -61,7 +61,62 @@ int load_missions_from_file(MissionControl* system, const char* filename) {
     //    - Return 0 for success
     
     // Your implementation here:
+    if (system == NULL || filename == NULL || filename[0] == '\0') {
+        return -1;
+    }
+
+    FILE *fp = fopen(filename, "r");
+
+    if (fp == NULL) {
+        return -1;
+    }
+
+    int num_missions = 0;
+    int scanned_items = fscanf(fp, "%d", &num_missions);
+
+    if (scanned_items != 1) {
+        fclose(fp);
+        return -1;
+    }
+
+    if (num_missions < 0) {
+        fclose(fp);
+        return -1;
+    }
+
+    if (num_missions == 0) {
+        fclose(fp);
+        return 0;
+    }
+
     
+    int temp_id;
+    char temp_name[MAX_NAME_LENGTH];
+    char temp_date[MAX_DATE_LENGTH];
+
+    for (int i = 0; i < num_missions; i++) {
+        int scanned_items = fscanf(fp, "%d %s %s", &temp_id, temp_name, temp_date);
+    
+        if (scanned_items != 3) {
+        fclose(fp);
+        return -1;
+        }
+
+        if (temp_id <= 0 || !is_valid_date_format(temp_date)) {
+            fclose(fp);
+            return -1;
+        }
+
+        int result = create_mission_with_crew(system, temp_id, temp_name, temp_date);
+    
+        if (result == -1) {
+            fclose(fp);
+            return -1;
+        }
+    }
+
+    fclose(fp);
+    return 0;
 }
 
 /*
@@ -116,5 +171,70 @@ int save_mission_report(const MissionControl* system, const char* filename) {
     //    - Return 0 for success
     
     // Your implementation here:
-    
+    int total_system_comms = 0;
+    if (system == NULL || filename == NULL || filename[0] == '\0') {
+        return -1;
+    }
+
+    FILE *fp = fopen(filename, "w");
+
+    if (fp == NULL) {
+        return -1;
+    }
+
+    fprintf(fp, "===============================================\n");
+    fprintf(fp, "SPACE MISSION CONTROL REPORT\n");
+    fprintf(fp, "===============================================\n");
+    fprintf(fp, "Total Missions in System: %d\n", system->mission_count);
+
+    for (int i = 0; i < system->mission_count; i++) {
+        const Mission *m = &system->missions[i];
+
+        total_system_comms += m->comm_count;
+
+        int routine = 0;
+        int urgent = 0;
+        int emergency = 0;
+
+        for (int j = 0; j < m->comm_count; j++) {
+            MessagePriority priority = m->communications[j].priority;
+            if (priority == ROUTINE) routine++;
+            else if (priority == URGENT) urgent++;
+            else if (priority == EMERGENCY) emergency++;
+        }
+
+        if (i > 0) fprintf(fp, "\n"); 
+
+        fprintf(fp, "Mission ID: %d\n", m->mission_id);
+        fprintf(fp, "Mission Name: %s\n", m->mission_name);
+        fprintf(fp, "Launch Date: %s\n", m->launch_date);
+        
+        fprintf(fp, "Status: ");
+        switch(m->status) {
+            case PLANNED: 
+                fprintf(fp, "Planned\n"); 
+                break;
+            case ACTIVE:  
+                fprintf(fp, "Active\n"); 
+                break;
+            case COMPLETED: 
+                fprintf(fp, "Completed\n"); 
+                break;
+            default:      
+                fprintf(fp, "Unknown\n"); 
+                break;
+        }
+        fprintf(fp, "Communications: %d\n", m->comm_count);
+        fprintf(fp, "-------------------\n");
+        fprintf(fp, "Communication Summary:\n");
+        fprintf(fp, "  Routine: %d, Urgent: %d, Emergency: %d\n", routine, urgent, emergency);
+    }
+
+    fprintf(fp, "\n===============================================\n");
+    fprintf(fp, "SYSTEM TOTALS:\n");
+    fprintf(fp, "Total Communications: %d\n", total_system_comms);
+    fprintf(fp, "===============================================\n");
+
+    fclose(fp);
+    return 0;
 }

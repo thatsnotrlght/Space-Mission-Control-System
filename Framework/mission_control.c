@@ -52,10 +52,10 @@ MissionControl* create_mission_control(int initial_capacity) {
         return NULL;
     }
 
-    MissionControl *ctrl = malloc(sizeof(MissionControl))
+    MissionControl *ctrl = malloc(sizeof(MissionControl));
 
     if (ctrl == NULL) {
-        perror("malloc failed");
+        return NULL;
     }
 
     ctrl->missions = malloc(initial_capacity * sizeof(Mission));
@@ -164,7 +164,7 @@ int create_mission_with_crew(MissionControl* system, int mission_id, const char*
     new_mission->status = PLANNED;
 
 
-    new_mission->communications = calloc(INITIAL_COMM_CAPACITY * sizeof(CommLog));
+    new_mission->communications = calloc(INITIAL_COMM_CAPACITY, sizeof(CommLog));
     if (new_mission->communications == NULL) {
         return -1;
     }
